@@ -1,46 +1,25 @@
 <script>
-	async function getAllNames() {
-		let url = 'https://pokeapi.co/api/v2/pokemon/?limit=1008';
-		let response = await fetch(url);
-		let responseAsJson = await response.json();
+	import { operationStore, query, setClient } from '@urql/svelte';
+	import client from '../../client';
+	import Card from '../lib/components/Card.svelte';
+	import Search from '../lib/components/Search.svelte';
+	setClient(client);
 
-		for (let i = 0; i < responseAsJson.results.length; i++) {
-			pokemons.push({
-				id: i + 1,
-				name: responseAsJson.results[i].name,
-				types: []
-			});
-		}
+	const currentPost = operationStore(
+		`
+    
+  `
+	);
 
-		getAllTypes();
-	}
-
-	/**fetch pokemon types */
-	async function getAllTypes() {
-		for (let i = 0; i < 18; i++) {
-			let url = 'https://pokeapi.co/api/v2/type/' + (i + 1);
-			let response = await fetch(url);
-			let responseAsJson = await response.json();
-
-			const pokemonInType = responseAsJson.pokemon;
-
-			for (j = 0; j < pokemonInType.length; j++) {
-				const pokemonId = pokemonInType[j].pokemon.url
-					.replace('https://pokeapi.co/api/v2/pokemon/', '')
-					.replace('/', '');
-
-				if (pokemonId <= pokemons.length && pokemons[pokemonId]) {
-					pokemons[pokemonId].types.push(responseAsJson.name);
-				}
-			}
-		}
-	}
+	query(currentPost);
 </script>
 
 <main class="flex w-full h-screen">
-	<section>
-		<div class="search">search</div>
-		<div class="card">card</div>
+	<section class="flex flex-wrap w-3/5 mt-11">
+		<Search />
+		<div class="flex w-1/5 poke-wrapper h-fit">
+			<Card />
+		</div>
 	</section>
 	<section>
 		<!-- <Details /> -->
