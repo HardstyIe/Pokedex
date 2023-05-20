@@ -2,6 +2,7 @@
 	import { graphql } from '$houdini';
 	import Card from '$lib/components/Card.svelte';
 	import Details from '$lib/components/Details.svelte';
+	import Search from '$lib/components/Search.svelte';
 
 	const allPokemonsQuery = graphql(`
 		query allPokemonsQuery @load {
@@ -59,6 +60,13 @@
 
 <main class="flex w-full h-screen">
 	<section class="flex flex-wrap w-3/5 mt-11">
+		<div class="w-full text-center search">
+			{#if typeof pokemons === 'undefined'}
+				<p>Pas de correspondance</p>
+			{:else}
+				<Search {pokemons} />
+			{/if}
+		</div>
 		<div class="flex flex-wrap w-full gap-8">
 			{#if typeof pokemons === 'undefined'}
 				<p>Pas de correspondance.</p>
