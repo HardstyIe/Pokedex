@@ -6,9 +6,13 @@
 	export let limit: number;
 	export let offset: number = 0;
 	export let searchText: string = '';
+	function onLoadMore() {
+		limit += 20;
+	}
 
 	export const _allPokemonsQueryVariables = () => {
-		return { limit, offset, searchText: searchText ? `%${searchText}%` : '%' };
+		const params = { limit, offset, searchText: searchText ? `%${searchText}%` : '%' };
+		return params;
 	};
 
 	const allPokemonsQuery = graphql(`
@@ -61,7 +65,6 @@
 		}
 	`);
 	$: pokemons = $allPokemonsQuery.data?.pokemon_v2_pokemon;
-	console.log('🚀 ~ file: List.svelte:64 ~ pokemons:', pokemons);
 </script>
 
 {#if $allPokemonsQuery.fetching}
@@ -77,6 +80,7 @@
 						<Card {pokemon} />
 					{/each}
 				{/if}
+				<button on:click={onLoadMore} class="bg-slate-200 rounded-xl">Load more..</button>
 			</div>
 		</section>
 		<section>

@@ -7,14 +7,13 @@
 	let searchText = '';
 
 	function onLoadMore() {
-		offset += 15;
+		limit += 20;
 	}
 </script>
 
 <main class="w-full h-screen p-4">
 	<section class="mb-20 text-center">
 		<Search bind:value={searchText} />
-		<button on:click={onLoadMore}>Load more..</button>
 	</section>
 	<section>
 		<List {limit} {offset} {searchText} />
