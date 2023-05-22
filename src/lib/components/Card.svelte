@@ -4,7 +4,7 @@
 	export let pokemon: allPokemonsQuery$result['pokemon_v2_pokemon'][0];
 </script>
 
-<div class="relative flex flex-col items-center w-1/5 pt-10 rounded-2xl bg-slate-400">
+<div class="relative flex flex-col items-center w-1/5 pt-10 rounded-2xl bg-slate-400" id="pokeCard">
 	<img
 		src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{pokemon.id}.png"
 		alt="Photo de {pokemon.pokemon_v2_pokemonspecy?.pokemon_v2_evolutionchain

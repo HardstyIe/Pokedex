@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { allPokemonsQuery$result } from '$houdini';
 	import { typeColors } from '$lib/typeColor';
-	// export let description: allPokemonsQuery$result['pokemon_v2_pokemonspeciesflavortext'][number]['flavor_text'];
 	export let pokemon: allPokemonsQuery$result['pokemon_v2_pokemon'][number];
+
 </script>
 
 <div class="relative flex flex-col items-center justify-center">
@@ -33,9 +33,13 @@
 		{/each}
 	</div>
 	<p class="">Entrée Pokedex:</p>
-	<p class="">
-		{pokemon.pokemon_v2_pokemonspecy?.pokemon_v2_pokemonspeciesflavortexts[0].flavor_text}
-	</p>
+	{#if pokemon.id >= 650}
+		<p>Les Pokémons plus récents n'ont pas encore la traduction française de la description</p>
+	{:else}
+		<p class="">
+			{pokemon.pokemon_v2_pokemonspecy?.pokemon_v2_pokemonspeciesflavortexts[0].flavor_text}
+		</p>
+	{/if}
 	<div class="flex justify-around w-4/5 weight-height">
 		<div>
 			<h1>Taille</h1>
