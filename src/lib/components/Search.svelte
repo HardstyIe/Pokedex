@@ -1,12 +1,23 @@
 <script lang="ts">
-	import type { allPokemonsQuery$result } from '$houdini';
-	export let pokemons: allPokemonsQuery$result['pokemon_v2_pokemon'];
+	export let value = '';
 
-	let SearchTerm = '';
+	const onKeydown = debounce(updateValue, 750);
 
-	function SearchFilter() {
-		return pokemons.filter((SearchTerm) => {});
+	function debounce(func: (...args: any) => void, timeout = 300) {
+		let timer: NodeJS.Timeout;
+		return (...args: any) => {
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				// @ts-ignore
+				func.apply(this, args);
+			}, timeout);
+		};
+	}
+
+	function updateValue(event: KeyboardEvent) {
+		// @ts-ignore
+		value = event.target!.value;
 	}
 </script>
 
-<input type="text" bind:value={SearchTerm} on:keydown={SearchFilter} />
+<input type="text" on:keydown={onKeydown} />
