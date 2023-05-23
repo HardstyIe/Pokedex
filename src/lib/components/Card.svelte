@@ -4,7 +4,9 @@
 	export let pokemon: allPokemonsQuery$result['pokemon_v2_pokemon'][0];
 </script>
 
-<div class="relative flex flex-col items-center w-1/5 pt-10 rounded-2xl bg-slate-400" id="pokeCard">
+<button
+	class="relative flex flex-wrap items-center justify-center w-1/5 pt-10 rounded-2xl bg-slate-400"
+>
 	<img
 		src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{pokemon.id}.png"
 		alt="Photo de {pokemon.pokemon_v2_pokemonspecy?.pokemon_v2_evolutionchain
@@ -19,11 +21,14 @@
 		<div class="flex gap-2">
 			{#each pokemon.pokemon_v2_pokemontypes as type}
 				{#if type.pokemon_v2_type?.name}
-					<p class="" style="background-color:{typeColors[type.pokemon_v2_type?.name]};">
+					<p
+						class="p-2 rounded-xl"
+						style="background-color:{typeColors[type.pokemon_v2_type?.name]};"
+					>
 						{type.pokemon_v2_type?.pokemon_v2_typenames[0].name}
 					</p>
 				{/if}
 			{/each}
 		</div>
 	</div>
-</div>
+</button>

@@ -20,4 +20,9 @@
 	}
 </script>
 
-<input type="text" on:keydown={onKeydown} />
+<input
+	type="text"
+	class="w-3/5 p-2 px-4 rounded-lg"
+	placeholder="Search your pokemon"
+	on:keydown={onKeydown}
+/> <i class="-ml-8 fa fa-search" />

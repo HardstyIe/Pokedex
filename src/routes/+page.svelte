@@ -1,18 +1,16 @@
 <script lang="ts">
 	import List from '$lib/components/List.svelte';
 	import Search from '$lib/components/Search.svelte';
-
-	let limit = 25;
+	let limit = 20;
 	let offset = 0;
 	let searchText = '';
-
-	function onLoadMore() {
-		limit += 20;
-	}
 </script>
 
 <main class="w-full h-screen p-4">
-	<section class="mb-20 text-center">
+	<!-- <section>
+		<Nav />
+	</section> -->
+	<section class="mt-5 mb-20 text-center">
 		<Search bind:value={searchText} />
 	</section>
 	<section>
