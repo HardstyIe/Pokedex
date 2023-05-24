@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { graphql, type allPokemonsQuery$result } from '$houdini';
 	import Card from '$lib/components/Card.svelte';
 	import Details from '$lib/components/Details.svelte';
+	import { graphql, type allPokemonsQuery$result } from '$houdini';
 
 	type Pokemon = allPokemonsQuery$result['pokemon_v2_pokemon'][0];
 
