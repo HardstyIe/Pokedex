@@ -1,7 +1,8 @@
 <script lang="ts">
+	import { graphql, type allPokemonsQuery$result } from '$houdini';
 	import Card from '$lib/components/Card.svelte';
 	import Details from '$lib/components/Details.svelte';
-	import { graphql, type allPokemonsQuery$result } from '$houdini';
+	import { status } from '../store';
 
 	type Pokemon = allPokemonsQuery$result['pokemon_v2_pokemon'][0];
 
@@ -13,6 +14,7 @@
 
 	function onPokemonClick(event: CustomEvent<Pokemon>) {
 		selectedPokemon = event.detail;
+		status.set(selectedPokemon.pokemon_v2_pokemonstats);
 	}
 
 	function onLoadMore() {

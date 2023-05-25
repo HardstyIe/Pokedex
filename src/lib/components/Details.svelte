@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { allPokemonsQuery$result } from '$houdini';
+	import Chart from './pokemon/Chart.svelte';
 	import PokemonAbilities from './pokemon/PokemonAbilities.svelte';
 	import PokemonEvolutionChain from './pokemon/PokemonEvolutionChain.svelte';
 	import PokemonImage from './pokemon/PokemonImage.svelte';
@@ -10,7 +11,7 @@
 	$: specy = pokemon.pokemon_v2_pokemonspecy;
 </script>
 
-<div class="fixed">
+<div class="">
 	<div
 		class="relative flex flex-col items-center justify-center w-3/4 mt-8 rounded-xl py-14 bg-slate-500"
 	>
@@ -50,10 +51,12 @@
 			<PokemonAbilities abilities={pokemon.pokemon_v2_pokemonabilities} />
 		</div>
 		<div class="flex flex-col w-full h-full m-auto div">
-			<PokemonStatus status={pokemon.pokemon_v2_pokemonstats} />
+			<PokemonStatus />
 		</div>
 		<div class="container flex items-center justify-center">
 			<PokemonEvolutionChain {specy} />
 		</div>
+		<Chart stats={pokemon.pokemon_v2_pokemonstats} />
 	</div>
+	<div />
 </div>
