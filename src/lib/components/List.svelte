@@ -21,10 +21,6 @@
 		limit += 20;
 	}
 
-	function onLoadLess() {
-		limit -= 20;
-	}
-
 	export const _allPokemonsQueryVariables = () => {
 		const params = {
 			limit,
@@ -90,28 +86,21 @@
 	$: pokemons = $allPokemonsQuery.data?.pokemon_v2_pokemon;
 </script>
 
-<div class="grid grid-cols-2" id="pokeList">
-	<section>
-		<div class="flex flex-wrap content-center justify-center gap-8">
-			{#if pokemons}
-				{#each pokemons as pokemon}
-					<Card {pokemon} on:click={onPokemonClick} />
-				{/each}
-			{:else}
-				<p />
-			{/if}
-		</div>
+<div class="flex w-full gap-4" id="pokeList">
+	<section class="grid w-4/5 grid-cols-4 gap-x-4 gap-y-8">
+		{#if pokemons}
+			{#each pokemons as pokemon}
+				<Card {pokemon} on:click={onPokemonClick} />
+			{/each}
+		{/if}
 
 		<div class="w-full mt-12 text-center">
 			<button on:click={onLoadMore} class="p-2 bg-slate-200 rounded-xl">Load more..</button>
-			<button on:click={onLoadLess} class="p-2 bg-slate-200 rounded-xl">Load less..</button>
 		</div>
 	</section>
-	<section class="flex flex-col items-center">
+	<section class="w-1/5">
 		{#if selectedPokemon}
 			<Details pokemon={selectedPokemon} />
-		{:else}
-			<p />
 		{/if}
 	</section>
 </div>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import List from '$lib/components/List.svelte';
+	import Nav from '$lib/components/Nav.svelte';
 	import Search from '$lib/components/Search.svelte';
 	let limit = 20;
 	let offset = 0;
@@ -7,9 +8,6 @@
 </script>
 
 <main class="w-full h-screen p-4">
-	<!-- <section>
-		<Nav />
-	</section> -->
 	<section class="mt-5 mb-20 text-center">
 		<Search bind:value={searchText} />
 	</section>

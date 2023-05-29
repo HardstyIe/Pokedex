@@ -15,7 +15,7 @@
 			src=" https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{item
 				.pokemon_v2_pokemonspeciesnames[0].pokemon_species_id}.png"
 			alt=""
-			class="h-32"
+			class="h-24"
 		/>
 	{/each}
 {:else}

@@ -13,7 +13,7 @@
 </script>
 
 <button
-	class="relative flex flex-wrap items-center justify-center w-1/5 pt-10 rounded-2xl bg-slate-400"
+	class="relative flex flex-wrap items-center justify-center w-full pt-10 mb-8 rounded-2xl bg-slate-400"
 	on:click={onClick}
 >
 	<img

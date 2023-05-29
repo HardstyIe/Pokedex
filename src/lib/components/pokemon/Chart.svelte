@@ -7,7 +7,7 @@
 		RadialLinearScale,
 		Title,
 		Tooltip
-	} from 'chart.js';
+	} from 'chart.js/auto';
 	import { Radar } from 'svelte-chartjs';
 	import { status } from '../../store';
 

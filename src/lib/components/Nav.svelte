@@ -1,25 +1,53 @@
 <script lang="ts">
+	let showMenu = false;
+
+	function toggleNavbar() {
+		showMenu = !showMenu;
+	}
 </script>
 
-<div class="flex text-sm breadcrumbs">
-	<ul class="flex">
-		<li class="flex">
-			<a href=""> Pokedex Lite </a>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				class="w-4 h-4 mr-2 stroke-current"
-				><path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-				/></svg
+<div>
+	<div>
+		<nav class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center">
+			<div class="flex items-center justify-between">
+				<a class="text-xl font-bold text-slate-300 md:text-2xl hover:text-blue-400" href="/home"
+					>Pokédex
+				</a>
+				<!-- Mobile menu button -->
+				<div on:click={toggleNavbar} class="flex md:hidden">
+					<button
+						type="button"
+						class="text-slate-300 hover:text-gray-400 focus:outline-none focus:text-gray-400"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			<!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+			<div
+				class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 {showMenu
+					? 'flex'
+					: 'hidden'}"
 			>
-		</li>
-		<li>
-			<a> Génération </a>
-		</li>
-	</ul>
+				<a class="text-slate-300 hover:text-blue-400" href="/login">Login</a>
+				<a class="text-slate-300 hover:text-blue-400" href="/blog">Sign up</a>
+				<a class="text-slate-300 hover:text-blue-400" href="/contact">Home</a>
+				<a class="text-slate-300 hover:text-blue-400" href="/about">My Team</a>
+			</div>
+		</nav>
+	</div>
 </div>
